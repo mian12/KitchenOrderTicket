@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <!-- KotMAIN Start here  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp" android:orientation="vertical"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp" android:orientation="horizontal"
+            android:layout_weight="1">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/vrTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="25dp"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:text="Vr#" />
+
+                    <EditText
+                        android:id="@+id/editTextVrValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/vrTextView"
+                        android:layout_alignTop="@+id/vrTextView"
+                        android:layout_toEndOf="@+id/vrTextView"
+                        android:ems="5"
+                        android:inputType="number"
+                        android:hint="#" />
+
+                    <ImageView
+                        android:id="@+id/imageViewUp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_above="@+id/imageViewDown"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/editTextVrValue"
+                        app:srcCompat="@drawable/up" />
+
+                    <ImageView
+                        android:id="@+id/imageViewDown"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignEnd="@+id/imageViewUp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toEndOf="@+id/editTextVrValue"
+                        app:srcCompat="@drawable/down" />
+                </RelativeLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/orderTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="87dp"
+                        android:text="Order # "
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/orderValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignTop="@+id/orderTextView"
+                        android:layout_marginEnd="38dp"
+                        android:text="32" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/kotTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="37dp"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:text="Kot # " />
+
+                    <TextView
+                        android:id="@+id/kotValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/kotTextView"
+                        android:layout_alignBottom="@+id/kotTextView"
+                        android:layout_marginStart="45dp"
+                        android:layout_toEndOf="@+id/kotTextView"
+                        android:text="33" />
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp" android:orientation="horizontal"
+            android:layout_weight="1">
+
+           <LinearLayout
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:layout_weight="5">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <TextView
+                       android:id="@+id/tableTextView"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_alignParentStart="true"
+                       android:layout_centerVertical="true"
+                       android:layout_marginStart="26dp"
+                       android:text="Table # "
+                       android:textSize="20sp"
+                       android:textStyle="bold" />
+
+                   <Spinner
+                       android:id="@+id/spinnerTable"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_alignBottom="@+id/tableTextView"
+                       android:layout_marginStart="17dp"
+                       android:layout_toEndOf="@+id/tableTextView" />
+               </RelativeLayout>
+
+           </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/waiterTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="26dp"
+                        android:text="Waiter : "
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinnerWaiter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/waiterTextView"
+                        android:layout_marginStart="17dp"
+                        android:layout_toEndOf="@+id/waiterTextView" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5">
+
+                <RadioGroup
+                    android:id="@+id/radioGroupRunning"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+
+                    <RadioButton
+                        android:id="@+id/newOrder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Free" />
+
+                    <RadioButton
+                        android:id="@+id/running"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Running" />
+
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5">
+
+                <RadioGroup
+                    android:id="@+id/radioGroupDinin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+
+                    android:orientation="horizontal">
+
+
+                    <RadioButton
+                        android:id="@+id/dinin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Din in" />
+
+                    <RadioButton
+                        android:id="@+id/Delivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery" />
+
+                    <RadioButton
+                        android:id="@+id/takeWay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Take way" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+    <!-- KotMAIN end  here  -->
+
+
+    <!-- header gridview Cart Start here  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"></LinearLayout>
+    <!-- header gridview Cart end here  -->
+
+
+
+
+    <!-- Remaining KotMain Start here  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/totalQtyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="27dp"
+                    android:text="Total Qty"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/totalQtyValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/totalQtyTextView"
+                    android:layout_centerVertical="true"
+                    android:text="0.0" />
+
+                <TextView
+                    android:id="@+id/amountTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="29dp"
+                    android:layout_toEndOf="@+id/totalQtyTextView"
+                    android:text="Amount"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/amountValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/amountTextView"
+                    android:layout_centerVertical="true"
+                    android:text="0.0" />
+
+                <TextView
+                    android:id="@+id/dispercentTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="33dp"
+                    android:layout_toEndOf="@+id/amountTextView"
+                    android:text="Dis"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextDiscount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignStart="@+id/dispercentTextView"
+                    android:layout_below="@+id/dispercentTextView"
+                    android:ems="2"
+                    android:hint="%"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
+                <TextView
+                    android:id="@+id/discValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/amountValue"
+                    android:layout_toEndOf="@+id/editTextDiscount"
+                    android:text="0.0" />
+
+                <TextView
+                    android:id="@+id/taxTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/discValue"
+                    android:layout_marginStart="22dp"
+                    android:layout_toEndOf="@+id/discValue"
+                    android:text="Tax"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextTax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/editTextDiscount"
+                    android:layout_alignStart="@+id/taxTextView"
+                    android:ems="2"
+                    android:maxLength="2"
+                    android:hint="%"
+                    android:inputType="number"/>
+
+                <TextView
+                    android:id="@+id/serviceChargesTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="20dp"
+                    android:text="Service Charges"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/serviceChargesValue"
+                    android:layout_alignBottom="@+id/serviceChargesValue"
+                    android:layout_alignStart="@+id/serviceChargesTextView"
+                    android:ems="2"
+                    android:hint="%"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
+                <TextView
+                    android:id="@+id/taxValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/taxTextView"
+                    android:layout_marginStart="18dp"
+                    android:layout_toEndOf="@+id/editTextTax"
+                    android:text="0.0" />
+
+                <TextView
+                    android:id="@+id/serviceChargesValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/amountValue"
+                    android:layout_marginStart="19dp"
+                    android:layout_toEndOf="@+id/editTextService"
+                    android:text="0.0" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp" android:orientation="horizontal"
+            android:layout_weight="5">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"></LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="4">
+
+                <TextView
+                    android:id="@+id/netAmountTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net Amount"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/netAmountValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#FF0000"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Remaining KotMain end here  -->
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"></LinearLayout>
+
+</LinearLayout>

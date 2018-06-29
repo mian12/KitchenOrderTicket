@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_edit_text_items"
+    android:padding="@dimen/dp5">
+
+    <TextView
+        android:id="@+id/tvEngName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp2"
+        android:layout_toLeftOf="@+id/btnAddToCart"
+        android:text="English Name"
+        android:textSize="@dimen/sp16"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp2"
+        android:layout_toLeftOf="@+id/btnAddToCart"
+        android:layout_below="@+id/tvEngName"
+        android:text="Price:"
+        android:textSize="@dimen/sp10"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp2"
+        android:layout_toLeftOf="@+id/btnAddToCart"
+        android:layout_below="@+id/tvPrice"
+        android:text="Qnty:"
+        android:textSize="@dimen/sp10"
+        android:textStyle="bold" />
+
+
+
+    <Button
+        android:id="@+id/btnAddToCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/dp5"
+        android:text="ADD TO CART"
+        android:textColor="@color/colorWhite" />
+</RelativeLayout>
+

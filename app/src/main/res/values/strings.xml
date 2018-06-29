@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Kitchen Order Ticket</string>
+
+
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="remove_from_cart">Remove From Cart</string>
+
+
+    <string name="items">Items</string>
+    <string name="categories">Categories</string>
+    <string name="demo">demo</string>
+    <string name="sub_categories">Sub Categories</string>
+    <string name="get_estimate">Estimate</string>
+</resources>

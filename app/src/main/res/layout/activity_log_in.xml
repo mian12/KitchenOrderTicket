@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_log_in"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/sign_up_bg_screen"
+    tools:context="com.solution.alnahar.kitchenorderticket.MainActivity">
+
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="1dp" android:gravity="bottom|right|top"
+    android:layout_weight="3">
+    <ImageView
+        android:id="@+id/setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/settingsicon"/>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="3"></LinearLayout>
+
+
+    <ImageView
+        android:layout_width="@dimen/dp120"
+        android:layout_height="@dimen/dp120"
+        android:layout_marginBottom="@dimen/dp80"
+        android:src="@drawable/logo" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/etUserName"
+            android:layout_width="260dp"
+            android:layout_height="58dp"
+            android:layout_margin="@dimen/dp5"
+            android:background="@drawable/user_pass_bg"
+            android:hint="@string/user_name"
+            android:text="admin"
+            android:inputType="text"
+            android:padding="@dimen/dp10"
+            android:textSize="@dimen/sp14" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/etPassword"
+            android:layout_width="260dp"
+            android:layout_height="54dp"
+            android:layout_margin="@dimen/dp5"
+            android:background="@drawable/user_pass_bg"
+            android:text="123"
+
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="@dimen/dp10"
+            android:textSize="@dimen/sp14" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp5"
+        android:layout_marginRight="@dimen/dp5"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="#990000"
+        android:text="Log In"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/sp14" />
+
+    <ImageView
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/powered_by" />
+</LinearLayout>

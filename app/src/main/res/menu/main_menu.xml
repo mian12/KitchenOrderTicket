@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_cart"
+        android:icon="@mipmap/ic_action_cart"
+        android:orderInCategory="101"
+        android:title="cart"
+        app:actionLayout="@layout/menu_action_item_badge"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/signout"
+        android:icon="@drawable/exit_new"
+        android:orderInCategory="1"
+        android:title="dddd"
+        app:showAsAction="always" />
+</menu>

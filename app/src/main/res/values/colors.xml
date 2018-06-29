@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#990000</color>
+    <color name="colorPrimaryDark">#D42626</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorWhite">#fff</color>
+    <color name="colorTransparent">#0000</color>
+
+    <color name="colorBlack">#000</color>
+    <color name="colorBlackMedium">#9000</color>
+    <color name="colorBlackLight">#4000</color>
+    <color name="colorBlackLow">#2000</color>
+
+    <color name="colorRed">#f00</color>
+    <color name="colorGreed">#0f0</color>
+    <color name="colorBlue">#00f</color>
+
+
+
+    <color name="rippleEffectColor">#3F51B5</color>
+
+    <color name="btnSave">#35b25f</color>
+
+</resources>
