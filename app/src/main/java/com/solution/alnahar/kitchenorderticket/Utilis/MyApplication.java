@@ -7,6 +7,7 @@ import com.solution.alnahar.kitchenorderticket.model.CartArrayModel;
 import com.solution.alnahar.kitchenorderticket.model.ItemModel;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Mian Shahbaz Idrees on 27-Jan-18.
@@ -49,6 +50,9 @@ public class MyApplication extends Application {
     public  static  String printRights=null;
 
 
+    public  static Date sessionDate;
+
+
 
     public  static  String ipAdress=null;
     public  static  String userDatabase=null;
@@ -56,6 +60,9 @@ public class MyApplication extends Application {
 
     private static MyApplication mInstance;
     private static Context mAppContext;
+
+
+
 
     @Override
     public void onCreate() {

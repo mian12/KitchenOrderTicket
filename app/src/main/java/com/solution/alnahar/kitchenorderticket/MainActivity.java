@@ -56,6 +56,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 
 public class MainActivity extends ParentActivity implements View.OnClickListener {
@@ -68,7 +69,7 @@ public class MainActivity extends ParentActivity implements View.OnClickListener
     private ProgressDialog dialog;
     ImageView settingButton;
     Connection conn;
-    ResultSet resultset, resaultSetAfterLogin;
+    ResultSet resultset, resaultSetAfterLogin,resultSessionDate;
     SQLiteDatabaseHelper databaseHelper;
     public static ArrayList<CategoriesModel> categoriesModelArrayList = null;
 
@@ -82,8 +83,8 @@ public class MainActivity extends ParentActivity implements View.OnClickListener
         setContentView(R.layout.activity_log_in);
 
         login = findViewById(R.id.loginButton);
-        usernameEditText = findViewById(R.id.editTextUserName);
-        passwordEditText = findViewById(R.id.editTextPassword);
+//        usernameEditText = findViewById(R.id.editTextUserName);
+//        passwordEditText = findViewById(R.id.editTextPassword);
 
         context = this;
 
@@ -289,6 +290,23 @@ public class MainActivity extends ParentActivity implements View.OnClickListener
 
 
                             z = "Login Successful";
+
+                            String queryResultSession = "select  top 1 CONVERT(varchar (10),  CURRENTDATE  ,103) as cdate  from SESSIONDATE ";
+                            Statement stmtSession = conn.createStatement();
+
+                            resultSessionDate = stmtSession.executeQuery(queryResultSession);
+                            if( resultSessionDate.next())
+                            {
+                              String s= resultSessionDate.getString("cdate");
+
+                                DateFormat format = new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH);
+                                MyApplication.sessionDate = format.parse(s);
+                                Log.e("session",MyApplication.sessionDate+"");
+                            }
+
+
+
+
 
 
                             String query = "select catid,name,img_path,isnull(Img,'')Img from  catagory order by catid ";

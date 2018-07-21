@@ -2,10 +2,12 @@ package com.solution.alnahar.kitchenorderticket.Cart;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -33,6 +35,8 @@ import com.solution.alnahar.kitchenorderticket.ParentActivity;
 import com.solution.alnahar.kitchenorderticket.R;
 import com.solution.alnahar.kitchenorderticket.SqlLiteDB.SQLiteDatabaseHelper;
 import com.solution.alnahar.kitchenorderticket.Utilis.MyApplication;
+import com.solution.alnahar.kitchenorderticket.Utilis.SharedPreferenceClass;
+import com.solution.alnahar.kitchenorderticket.model.FtypeModel;
 import com.solution.alnahar.kitchenorderticket.model.ItemModel;
 import com.solution.alnahar.kitchenorderticket.model.GetVrnoAllBySingleIdModel;
 import com.solution.alnahar.kitchenorderticket.model.TabelModel;
@@ -46,11 +50,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.IllegalFormatCodePointException;
+import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -63,6 +69,7 @@ public class CartActivity extends ParentActivity  implements  View.OnClickListen
 
     ArrayList<TabelModel> tabelNumberList;
     ArrayList<WaiterModel> waiterNumberList;
+    ArrayList<FtypeModel> fTypeNumberList;
 
 
     public cartRecyclerAdapter adapter;
@@ -71,14 +78,14 @@ public class CartActivity extends ParentActivity  implements  View.OnClickListen
 
 ImageView resetButton,saveButton,deleteButton,printButton,pendingOrdersButton;
 
-    TextView qtyValueTextView, amountValueTextView, discValueTextView, taxValueTextView, serviceChargesValueTextView, netAmountValueTextView;
+    TextView qtyValueTextView, amountValueTextView, discValueTextView, taxValueTextView, serviceChargesValueTextView, netAmountValueTextView,txtViewVrDate;
     EditText editTextDiscount, editTextTax, editTextServiceCharges;
 
     TextView orderValue,kotValue;
     EditText editTextVrValue;
     ImageView vrUpImageView,vrDownImageView;
 
-    Spinner tableSpinner,waiterSpinner;
+    Spinner tableSpinner,waiterSpinner,spinnerFtype;
     LinearLayout cartLinearLayout;
 
 
@@ -91,15 +98,19 @@ ImageView resetButton,saveButton,deleteButton,printButton,pendingOrdersButton;
 
     String[] waiterNameArray=null;
     String[] tableNumberArray=null;
+    String[] fTypeNumberArray=null;
 
     public  boolean flagtable;
     public  boolean flagWaiter;
+    public  boolean flagFtype;
 
 
     String waiter_ID=null;
     String waiter_NAME=null;
     String table_ID=null;
     String table_NAME=null;
+    String fType_ID=null;
+    String fType_NAME=null;
     String freeOrRunning=null;
     String diinOrDelivery=null;
 
@@ -162,6 +173,9 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Cart Details");
+
+
+
 
 
         context = this;
@@ -241,6 +255,23 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
 
 
 
+
+
+        txtViewVrDate=findViewById(R.id.txtView_vrDate);
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            String formattedDate = formatter.format(MyApplication.sessionDate);
+            txtViewVrDate.setText(formattedDate);
+        }catch (Exception e)
+        {
+            e.getMessage();
+        }
+
+
+
+
+
+
         qtyValueTextView = findViewById(R.id.totalQtyValue);
         amountValueTextView = findViewById(R.id.amountValue);
         discValueTextView = findViewById(R.id.discValue);
@@ -251,6 +282,7 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
 
 
         editTextVrValue=findViewById(R.id.editTextVrValue);
+        spinnerFtype=findViewById(R.id.spinner_ftype);
 
 
 
@@ -295,6 +327,7 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
 
         tableSpinner=findViewById(R.id.spinnerTable);
         waiterSpinner=findViewById(R.id.spinnerWaiter);
+        spinnerFtype=findViewById(R.id.spinner_ftype);
 
 
 
@@ -606,8 +639,6 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
                 break;
             case R.id.delete:
 
-
-
                 if (MyApplication.deleteRights.equalsIgnoreCase("1"))
                 {
 
@@ -616,14 +647,32 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
 
 
 
-                            VR = String.valueOf(validaterInteger(editTextVrValue.getText().toString()));
+                            new AlertDialog.Builder(context)
+                                    .setMessage("Are you sure you want to delete?")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
 
-                            int vrnoa = new Double(VR).intValue();
+                                            // start code from here
 
-                            String[] param={"KOT",vrnoa+""};
+                                            VR = String.valueOf(validaterInteger(editTextVrValue.getText().toString()));
 
-                            DeleteVoucher deleteVoucher=new DeleteVoucher();
-                            deleteVoucher.execute(param);
+                                            int vrnoa = new Double(VR).intValue();
+
+                                            String[] param={"KOT",vrnoa+""};
+
+                                            DeleteVoucher deleteVoucher=new DeleteVoucher();
+                                            deleteVoucher.execute(param);
+
+
+                                            // end code here
+
+
+                                        }
+                                    })
+                                    .setNegativeButton("No", null)
+                                    .show();
+
                         }
                     }
                     catch (Exception e)
@@ -637,6 +686,10 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
                 {
                     Toast.makeText(CartActivity.this,"Sorry you have not rights",Toast.LENGTH_SHORT).show();
                 }
+
+
+
+
 
 
                 break;
@@ -2313,6 +2366,314 @@ catch ( Exception ex)
 
     }
 
+
+
+    public class GetFtypeRetrive extends AsyncTask<String, String, String> {
+        String z = "";
+
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String  waiterId=params[0];
+            DbConnection connect = new DbConnection();
+
+
+            try {
+                conn = connect.connectionclass();
+                if (conn == null) {
+                    z = "Please check internet connection";
+                } else {
+
+                    String query ="select * from Waiter where Waiter_Id="+waiterId;
+
+                    Statement stmt = conn.createStatement();
+                    resultset = stmt.executeQuery(query);
+
+                    waiterNumberList = new ArrayList<>();
+
+
+
+                    while (resultset.next()) {
+
+                        String waiter_id = resultset.getString("Waiter_Id");
+                        String name = resultset.getString("Name");
+
+                        WaiterModel object = new WaiterModel();
+
+                        object.setWaiterId(waiter_id);
+                        object.setWaiterName(name);
+
+
+                        waiterNumberList.add(object);
+                    }
+
+                    // spinner for waiter//
+                    waiterNameArray=new String[waiterNumberList.size()];
+
+                    for (int i=0; i<waiterNumberList.size(); i++){
+                        waiterNameArray[i]=waiterNumberList.get(i).getWaiterName();
+
+                    }
+
+
+                    Log.d("Size waiter_List", waiterNumberList.size() + "");
+
+                    resultset.close();
+                }
+
+            } catch (Exception ex) {
+                z = ex.getMessage();
+
+            } finally {
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        if (resultset != null) {
+                            resultset.close();
+                        }
+
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+
+            return z;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            waiterSpinnerRetrive(waiterSpinner,waiterNameArray);
+        }
+
+
+    }
+
+    public class GetFtype extends AsyncTask<String, String, String> {
+        String z = "";
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            DbConnection connect = new DbConnection();
+
+
+            try {
+                conn = connect.connectionclass();
+                if (conn == null) {
+                    z = "Please check internet connection";
+                } else {
+
+                    String query ="select * from Waiter ";
+
+                    Statement stmt = conn.createStatement();
+                    resultset = stmt.executeQuery(query);
+
+                    fTypeNumberList = new ArrayList<>();
+
+
+
+                    while (resultset.next()) {
+
+                        String waiter_id = resultset.getString("Waiter_Id");
+                        String name = resultset.getString("Name");
+
+                        FtypeModel object = new FtypeModel();
+
+                        object.setfTypeId(waiter_id);
+                        object.setfTypeName(name);
+
+
+                        fTypeNumberList.add(object);
+                    }
+
+                    // spinner for waiter//
+                    fTypeNumberArray=new String[fTypeNumberList.size()];
+
+                    for (int i=0; i<fTypeNumberList.size(); i++){
+                        fTypeNumberArray[i]=fTypeNumberList.get(i).getfTypeName();
+
+                    }
+
+
+                    Log.d("Size fType_List", fTypeNumberList.size() + "");
+
+                    resultset.close();
+                }
+
+            } catch (Exception ex) {
+                z = ex.getMessage();
+
+            } finally {
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        if (resultset != null) {
+                            resultset.close();
+                        }
+
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+
+            return z;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            fTypeSpinner(spinnerFtype,fTypeNumberArray,0);
+        }
+
+
+    }
+
+
+
+    public  void fTypeSpinnerRetrive(final Spinner spinnerFtype, String[] tableArray)
+    {
+
+
+        try {
+
+
+            SpinnerSelectValueAdapter adapter = new SpinnerSelectValueAdapter(CartActivity.this, android.R.layout.simple_list_item_1);
+            adapter.addAll(tableArray);
+            adapter.add("Select FType");
+            spinnerFtype.setSelection(adapter.getCount());
+            spinnerFtype.setAdapter(adapter);
+            spinnerFtype.setSelection(0);
+
+            spinnerFtype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view,
+                                           int position, long id) {
+                    // TODO Auto-generated method stub
+
+
+                    String fTypeNumber = spinnerFtype.getSelectedItem().toString();
+
+                    int indexNew = (int) id;
+
+                    String fTypeId = fTypeNumberList.get(indexNew).getfTypeId();
+                    String fTypeName = fTypeNumberList.get(indexNew).getfTypeName();
+                    fType_NAME=fTypeName;
+                    fType_ID = fTypeId;
+                    flagFtype = true;
+
+
+                }
+
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    // TODO Auto-generated method stub
+
+                }
+            });
+
+        }
+        catch (Exception e)
+        {
+            e.getMessage();
+        }
+
+
+    }
+
+
+
+    public  void fTypeSpinner(final Spinner spinnerFtype, String[] fTypeArray, final int index)
+    {
+
+
+        try {
+
+
+            SpinnerSelectValueAdapter adapter = new SpinnerSelectValueAdapter(CartActivity.this, android.R.layout.simple_list_item_1);
+            adapter.addAll(fTypeArray);
+            adapter.add("Select FType");
+            spinnerFtype.setAdapter(adapter);
+            spinnerFtype.setSelection(adapter.getCount());
+
+            if (flagFtype) {
+
+                spinnerFtype.setSelection(index);
+                flagFtype = false;
+            }
+
+            spinnerFtype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view,
+                                           int position, long id) {
+                    // TODO Auto-generated method stub
+
+                    if (spinnerFtype.getSelectedItem() == "Select FType") {
+                        //Do nothing.
+                    } else {
+
+                        String fTypeNumber = spinnerFtype.getSelectedItem().toString();
+
+                        int indexNew = (int) id;
+
+                        String fTypeId = fTypeNumberList.get(indexNew).getfTypeId();
+                        String fTypeName =fTypeNumberList.get(indexNew).getfTypeName();
+
+                        fType_NAME=fTypeName;
+
+                        fType_ID = fTypeId;
+                        flagFtype = true;
+
+
+//                        if (freeOrRunning.equalsIgnoreCase("Running")) {
+//                            GetRunningOrderNo getRunningOrderNo = new GetRunningOrderNo();
+//                            getRunningOrderNo.execute("");
+//                        }
+
+
+                    }
+
+
+                }
+
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    // TODO Auto-generated method stub
+
+                }
+            });
+
+        }
+
+        catch (Exception e)
+        {
+            e.getMessage();
+        }
+
+
+    }
 
 
 

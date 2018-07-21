@@ -22,19 +22,19 @@ public class DbConnection {
 
     {
 
-//
-//        String user="sa";
-//        String database="CP_Restaurant_2017";
-//        String password="123";
-//        String server="192.168.10.52";
 
-
-
-
-        String user=MyApplication.userDatabase;
-        String password=MyApplication.passwordDatabase;
-         String server=MyApplication.ipAdress;
+        String user="sa";
         String database="CP_Restaurant_2017";
+        String password="123";
+        String server="192.168.10.9";
+
+
+
+//
+//        String user=MyApplication.userDatabase;
+//        String password=MyApplication.passwordDatabase;
+//         String server=MyApplication.ipAdress;
+//        String database="CP_Restaurant_2017";
 
 
 
@@ -47,7 +47,7 @@ public class DbConnection {
 
 
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-           ConnectionURL="jdbc:jtds:sqlserver://"+server+";"+"DatabaseName="+database+";user="+user+";password="+password+";"+"integratedSecurity=true;";
+           ConnectionURL="jdbc:jtds:sqlserver://"+server+";"+"DatabaseName="+database+";user="+user+";password="+password+";"+"integratedSecurity=false;";
             //ConnectionURL="jdbc:jtds:sqlserver://"+server+";"+"DatabaseName="+database+";user="+user+";password="+password;
             connection= DriverManager.getConnection(ConnectionURL);
         }

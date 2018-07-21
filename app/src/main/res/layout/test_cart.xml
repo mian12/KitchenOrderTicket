@@ -1,117 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="#fff"
+    android:layout_height="match_parent"
     android:layout_margin="5dp"
-    android:layout_height="match_parent">
+    android:background="#fff"
+    android:orientation="vertical">
 
 
     <ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Vr#" />
+
+                <EditText
+                    android:id="@+id/editTextVrValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+
+                    android:inputType="number" />
+
+                <ImageView
+                    android:id="@+id/imageViewVrUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:srcCompat="@drawable/plus" />
+
+                <ImageView
+                    android:id="@+id/imageViewVrDown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    app:srcCompat="@drawable/minus" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Order#" />
+
+                <TextView
+                    android:id="@+id/orderValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="45" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Kot#" />
+
+                <TextView
+                    android:id="@+id/kotValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="343" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
     <LinearLayout
-        android:layout_width="match_parent" android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_height="0dp">
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="5dp"
+
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="7"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-
+            android:layout_weight="1"
+            android:layout_height="match_parent">
             <TextView
-                android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="NOP" />
 
-                android:text="Vr#" />
 
             <EditText
-                android:id="@+id/editTextVrValue"
-                android:layout_width="wrap_content"
+                android:id="@+id/editText_nop"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:ems="3"
-
                 android:inputType="number" />
-
-            <ImageView
-                android:id="@+id/imageViewVrUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                app:srcCompat="@drawable/plus" />
-
-            <ImageView
-                android:id="@+id/imageViewVrDown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                app:srcCompat="@drawable/minus" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
             <TextView
-                android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Order#" />
+                android:text="FType" />
 
-            <TextView
-                android:id="@+id/orderValue"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/spinner_ftype"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="45" />
+               />
+
+
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_weight="5">
-
-
+            android:layout_weight="1"
+            android:layout_height="match_parent">
             <TextView
-                android:id="@+id/textView9"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Kot#" />
-
+                android:text="Date" />
             <TextView
-                android:id="@+id/kotValue"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtView_vrDate"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="343" />
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:text="dd-MMM-yy" />
         </LinearLayout>
-
-
-
 
 
     </LinearLayout>
-
-    </ScrollView>
 
 
     <LinearLayout
@@ -122,47 +188,53 @@
 
 
         <LinearLayout
-            android:layout_width="0dp" android:layout_weight="1"
-            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_height="match_parent">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="3"
-                android:layout_marginLeft="5dp"
-                android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Table#" />
+                android:layout_marginLeft="5dp"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Table#" />
             </LinearLayout>
+
             <LinearLayout
-                android:background="#990000"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="7"
-                android:layout_height="wrap_content">
+                android:background="#990000">
+
                 <Spinner
                     android:id="@+id/spinnerTable"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                     />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp" android:layout_weight="1"
-            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_height="match_parent">
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="3"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_height="wrap_content">
+                android:layout_weight="3">
+
                 <TextView
                     android:id="@+id/textView1cc1"
                     android:layout_width="wrap_content"
@@ -190,14 +262,17 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent" android:layout_weight="1"
-        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
-        android:layout_height="0dp">
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="0dp" android:layout_weight="5"
-            android:layout_height="match_parent">
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+
             <RadioGroup
                 android:id="@+id/radioGroupRunning"
                 android:layout_width="match_parent"
@@ -227,8 +302,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp" android:layout_weight="5"
-            android:layout_height="match_parent">
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+
             <RadioGroup
                 android:id="@+id/radioGroupDinin"
                 android:layout_width="wrap_content"
@@ -268,108 +345,99 @@
     </LinearLayout>
 
 
-
-    <LinearLayout
-        android:layout_width="match_parent" android:layout_weight="6"
-        android:orientation="vertical"
-        android:layout_height="6dp">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:weightSum="10"
-        android:layout_height="wrap_content">
-        
+        android:layout_height="6dp"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
             <LinearLayout
-                android:background="@color/colorPrimary"
-                android:layout_weight="2"
                 android:layout_width="match_parent"
-                android:layout_height="0dp" >
-
-                <TextView
-                    android:layout_width="@dimen/dp40"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="Sr"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/sp16" />
-
-                <TextView
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:text="Name"
-                    android:textColor="@color/colorWhite"
-
-                    android:textSize="@dimen/sp16" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:weightSum="10">
 
 
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="Qty"
-                    android:textColor="@color/colorWhite"
-
-                    android:textSize="@dimen/sp16" />
-
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginStart="50dp"
-                    android:text="Amount"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:background="@color/colorPrimary">
 
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/sp16" />
+                    <TextView
+                        android:layout_width="@dimen/dp40"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Sr"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/sp16" />
 
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:textColor="@color/colorWhite"
+
+                        android:textSize="@dimen/sp16" />
+
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Qty"
+                        android:textColor="@color/colorWhite"
+
+                        android:textSize="@dimen/sp16" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="50dp"
+                        android:text="Amount"
+
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/sp16" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="8">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvCart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
 
 
             </LinearLayout>
+        </HorizontalScrollView>
 
-        <LinearLayout
-            android:layout_weight="8"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp" >
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvCart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-            </android.support.v7.widget.RecyclerView>
-
-        </LinearLayout>
+            android:layout_height="match_parent">
 
 
-
-
-
-        
-        
-    </LinearLayout>
-    </HorizontalScrollView>
-    </ScrollView>
+        </ScrollView>
 
 
     </LinearLayout>
-
-
-
 
 
     <!-- Summery Remaining KotMain Start here  -->
@@ -380,200 +448,201 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_height="0dp">
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent" android:layout_weight="1"
-        android:layout_height="0dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/totalQtyTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="27dp"
-                android:text="Qty"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/totalQtyTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="27dp"
+                        android:text="Qty"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/totalQtyValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/totalQtyTextView"
-                android:layout_centerVertical="true"
-                android:text="0.0" />
+                    <TextView
+                        android:id="@+id/totalQtyValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/totalQtyTextView"
+                        android:layout_centerVertical="true"
+                        android:text="0.0" />
 
-            <TextView
-                android:id="@+id/amountTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="29dp"
-                android:layout_toEndOf="@+id/totalQtyTextView"
-                android:text="Amount"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/amountTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="29dp"
+                        android:layout_toEndOf="@+id/totalQtyTextView"
+                        android:text="Amount"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/amountValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/amountTextView"
-                android:layout_centerVertical="true"
-                android:text="0.0" />
+                    <TextView
+                        android:id="@+id/amountValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/amountTextView"
+                        android:layout_centerVertical="true"
+                        android:text="0.0" />
 
-            <TextView
-                android:id="@+id/dispercentTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="33dp"
-                android:layout_toEndOf="@+id/amountTextView"
-                android:text="Dis"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/dispercentTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="33dp"
+                        android:layout_toEndOf="@+id/amountTextView"
+                        android:text="Dis"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextDiscount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignStart="@+id/dispercentTextView"
-                android:layout_below="@+id/dispercentTextView"
-                android:ems="2"
-                android:hint="%"
-                android:inputType="number"
-                android:maxLength="2" />
+                    <EditText
+                        android:id="@+id/editTextDiscount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/dispercentTextView"
+                        android:layout_below="@+id/dispercentTextView"
+                        android:ems="2"
+                        android:hint="%"
+                        android:inputType="number"
+                        android:maxLength="2" />
 
-            <TextView
-                android:id="@+id/discValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/amountValue"
-                android:layout_toEndOf="@+id/editTextDiscount"
-                android:text="0.0" />
+                    <TextView
+                        android:id="@+id/discValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/amountValue"
+                        android:layout_toEndOf="@+id/editTextDiscount"
+                        android:text="0.0" />
 
-            <TextView
-                android:id="@+id/taxTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/discValue"
-                android:layout_marginStart="22dp"
-                android:layout_toEndOf="@+id/discValue"
-                android:text="Tax"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/taxTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/discValue"
+                        android:layout_marginStart="22dp"
+                        android:layout_toEndOf="@+id/discValue"
+                        android:text="Tax"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextTax"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/editTextDiscount"
-                android:layout_alignStart="@+id/taxTextView"
-                android:ems="2"
-                android:maxLength="2"
-                android:hint="%"
-                android:inputType="number"/>
+                    <EditText
+                        android:id="@+id/editTextTax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/editTextDiscount"
+                        android:layout_alignStart="@+id/taxTextView"
+                        android:ems="2"
+                        android:hint="%"
+                        android:inputType="number"
+                        android:maxLength="2" />
 
-            <TextView
-                android:id="@+id/serviceChargesTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="54dp"
-                android:layout_toEndOf="@+id/taxValue"
-                android:text="SC"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/serviceChargesTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="54dp"
+                        android:layout_toEndOf="@+id/taxValue"
+                        android:text="SC"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextService"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/serviceChargesValue"
-                android:layout_alignBottom="@+id/serviceChargesValue"
-                android:layout_alignStart="@+id/serviceChargesTextView"
-                android:ems="2"
-                android:hint="%"
-                android:inputType="number"
-                android:maxLength="2" />
+                    <EditText
+                        android:id="@+id/editTextService"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/serviceChargesValue"
+                        android:layout_alignBottom="@+id/serviceChargesValue"
+                        android:layout_alignStart="@+id/serviceChargesTextView"
+                        android:ems="2"
+                        android:hint="%"
+                        android:inputType="number"
+                        android:maxLength="2" />
 
-            <TextView
-                android:id="@+id/taxValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/taxTextView"
-                android:layout_marginStart="18dp"
-                android:layout_toEndOf="@+id/editTextTax"
-                android:text="0.0" />
+                    <TextView
+                        android:id="@+id/taxValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/taxTextView"
+                        android:layout_marginStart="18dp"
+                        android:layout_toEndOf="@+id/editTextTax"
+                        android:text="0.0" />
 
-            <TextView
-                android:id="@+id/serviceChargesValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/amountValue"
-                android:layout_marginStart="19dp"
-                android:layout_toEndOf="@+id/editTextService"
-                android:text="0.0" />
-        </RelativeLayout>
-
-
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/serviceChargesValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/amountValue"
+                        android:layout_marginStart="19dp"
+                        android:layout_toEndOf="@+id/editTextService"
+                        android:text="0.0" />
+                </RelativeLayout>
 
 
-    <!--Summry end  here-->
+            </LinearLayout>
 
 
+            <!--Summry end  here-->
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"></LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center" android:layout_marginTop="10dp"
-            android:layout_weight="5">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"></LinearLayout>
 
-            <TextView
-                android:id="@+id/netAmountTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Net Amount"
-                android:layout_marginLeft="17dp"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/netAmountValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:layout_marginLeft="17dp"
+                    <TextView
+                        android:id="@+id/netAmountTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="17dp"
+                        android:text="Net Amount"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
-                android:textColor="#FF0000"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/netAmountValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="17dp"
+                        android:text="0"
+
+                        android:textColor="#FF0000"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
 
-    </LinearLayout>
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -582,22 +651,20 @@
     <!-- Summery Remaining KotMain end here  -->
 
 
-
-  <!--Button layout start from here-->
+    <!--Button layout start from here-->
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_height="0dp">>
+        android:orientation="horizontal">>
 
         <ImageView
             android:id="@+id/reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/reset_selector"
-            />
+            android:src="@drawable/reset_selector" />
 
 
         <ImageView
@@ -608,6 +675,7 @@
             android:src="@drawable/save_selector"
 
             />
+
         <ImageView
             android:id="@+id/delete"
             android:layout_width="wrap_content"
@@ -617,6 +685,7 @@
 
 
             />
+
         <ImageView
             android:id="@+id/print"
             android:layout_width="wrap_content"
@@ -635,12 +704,9 @@
             />
 
 
-
-
     </LinearLayout>
 
     <!--Button layout end here-->
-
 
 
 </LinearLayout>
