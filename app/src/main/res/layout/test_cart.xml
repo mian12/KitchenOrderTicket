@@ -112,6 +112,10 @@
     </ScrollView>
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -123,37 +127,59 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1"  android:orientation="horizontal" android:gravity="center_vertical"
             android:layout_height="match_parent">
+
+
+
             <TextView
+                android:layout_weight="2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NOP" />
 
 
             <EditText
+                android:layout_weight="8"
                 android:id="@+id/editText_nop"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="3"
                 android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="FType" />
 
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+
+                android:background="#990000">
             <Spinner
                 android:id="@+id/spinner_ftype"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-               />
+                android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -161,23 +187,25 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:layout_height="match_parent">
             <TextView
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="Date" />
             <TextView
                 android:id="@+id/txtView_vrDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="20dp"
                 android:text="dd-MMM-yy" />
         </LinearLayout>
 
 
     </LinearLayout>
+
+    </ScrollView>
 
 
     <LinearLayout

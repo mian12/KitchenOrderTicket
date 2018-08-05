@@ -26,7 +26,7 @@ public class DbConnection {
         String user="sa";
         String database="CP_Restaurant_2017";
         String password="123";
-        String server="192.168.10.9";
+        String server="192.168.8.108";
 
 
 

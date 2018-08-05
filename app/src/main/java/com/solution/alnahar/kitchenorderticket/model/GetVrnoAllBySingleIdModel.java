@@ -23,6 +23,26 @@ public class GetVrnoAllBySingleIdModel {
     private  String serviceAmount;
     private  String status;
     private  String etype;
+    private  String food_Type;
+    private  String nofg;
+
+    public String getNofg() {
+        return nofg;
+    }
+
+    public void setNofg(String nofg) {
+        this.nofg = nofg;
+    }
+
+
+
+    public String getFood_Type() {
+        return food_Type;
+    }
+
+    public void setFood_Type(String food_Type) {
+        this.food_Type = food_Type;
+    }
 
     public String getDiscPercent() {
         return discPercent;

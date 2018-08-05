@@ -82,7 +82,7 @@ ImageView resetButton,saveButton,deleteButton,printButton,pendingOrdersButton;
     EditText editTextDiscount, editTextTax, editTextServiceCharges;
 
     TextView orderValue,kotValue;
-    EditText editTextVrValue;
+    EditText editTextVrValue,editText_nop;
     ImageView vrUpImageView,vrDownImageView;
 
     Spinner tableSpinner,waiterSpinner,spinnerFtype;
@@ -109,8 +109,8 @@ ImageView resetButton,saveButton,deleteButton,printButton,pendingOrdersButton;
     String waiter_NAME=null;
     String table_ID=null;
     String table_NAME=null;
-    String fType_ID=null;
-    String fType_NAME=null;
+//    String fType_ID=null;
+    String fType_NAME="";
     String freeOrRunning=null;
     String diinOrDelivery=null;
 
@@ -197,6 +197,7 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
         editTextDiscount = findViewById(R.id.editTextDiscount);
         editTextTax = findViewById(R.id.editTextTax);
         editTextServiceCharges = findViewById(R.id.editTextService);
+        editText_nop= findViewById(R.id.editText_nop);
 
 
         try {
@@ -533,6 +534,11 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
         GetKot getKot=new GetKot();
         getKot.execute("");
 
+        GetFtype getFtype=new GetFtype();
+        getFtype.execute("");
+
+
+
         GetTableNumber getTableNumber=new GetTableNumber();
         getTableNumber.execute("");
 
@@ -728,13 +734,15 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
         TOTAL_QTY=String.valueOf(validaterInteger(qtyValueTextView.getText().toString()));
 
 
+
         if (SPINNER_TABLE_INVISIBLE)
         {
             TABLE_ID="0";
         }
 
 
-        if (TABLE_ID.equalsIgnoreCase("0.0")  || WAITER_ID.equalsIgnoreCase("0.0") || TOTAL_QTY.equalsIgnoreCase("0.0"))
+        if (TABLE_ID.equalsIgnoreCase("0.0")  || WAITER_ID.equalsIgnoreCase("0.0")
+                || TOTAL_QTY.equalsIgnoreCase("0.0") || fType_NAME.isEmpty())
         {
             Toast.makeText(this, " plz fill all fields", Toast.LENGTH_SHORT).show();
         }
@@ -745,7 +753,7 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
 
             ETYPE="KOT";
 
-            NOFG="nofg";
+            NOFG=String.valueOf(validaterInteger(editText_nop.getText().toString()));
 
 
             VR=String.valueOf(validaterInteger(editTextVrValue.getText().toString()));
@@ -815,12 +823,12 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
                         Statement stmt = conn.createStatement();
                         int res = stmt.executeUpdate(query);
 
-                        String UpdateQuery = "UPDATE KotMain SET  VrNo ="+new Double(KOT).intValue()+", VrNoa ="+new Double(VR).intValue()+", VrDate ='"+currentDate+"', Description ='des', " +
+                        String UpdateQuery = "UPDATE KotMain SET  VrNo ="+new Double(KOT).intValue()+", VrNoa ="+new Double(VR).intValue()+", VrDate ='"+currentDate+"', Description ='des', " +"nofg ="+new Double(NOFG).intValue()+","+
                             "OrderNo ="+new Double(ORDER).intValue()+", Type ='"+RADIO_DIIN_DELIVERY_TAKEWAY+"', EType ='"+ETYPE+"', Discount ="+DISCOUNT_RUPEES+", " +
                             "DiscPercent ="+DISCOUNT_PERCENT+", Charges ="+SERVICE_RUPEES+", TotalAmount ="+TOTAL_AMOUNT+", TotalQty ="+TOTAL_QTY+", " +
                             "Change =0, NetAmount ="+NET_AMOUNT+", Service_Percent ="+SERVICE_PERCENT+", tableId ="+new Double(TABLE_ID).intValue()+"," +
                             "waiterId ="+new Double(WAITER_ID).intValue()+", tax ="+TAX_RUPEES+", taxPercent ="+TAX_PERCENT+", UId =1, " +
-                            "Food_Type ='', HoldPrint =0  WHERE ETYPE ='"+ETYPE+"' AND VRNOA ="+new Double(VR).intValue()+" ";
+                            "Food_Type ='"+fType_NAME+"', HoldPrint =0  WHERE ETYPE ='"+ETYPE+"' AND VRNOA ="+new Double(VR).intValue()+" ";
 
 
                         stmt = conn.createStatement();
@@ -832,7 +840,7 @@ boolean  SPINNER_TABLE_INVISIBLE=false;
 
 
                         String sqlQueryKotMin = "INSERT INTO KotMain(KotId,VrNo,VrNoa,VrDate,Description,PartyId,OrderNo,Type,EType,Discount,DiscPercent,Charges,TotalAmount,TotalQty,Paid,Change,NetAmount,Other1,Service_Percent,tableId,waiterId,status,nofg,tax,taxPercent,UId,CustomerId,Other2,Food_Type,EType2,HoldPrint) " +
-                                "VALUES (" + KOT_ID + "," + KOT + "," + VR + ",'" + currentDate + "','" + DESCRIPTION + "','0004'," + ORDER + ",'" + RADIO_DIIN_DELIVERY_TAKEWAY + "','" + ETYPE + "'," + DISCOUNT_RUPEES + "," + DISCOUNT_PERCENT + "," + SERVICE_RUPEES + "," + TOTAL_AMOUNT + "," + TOTAL_QTY + ",0,0," + NET_AMOUNT + ",'other1'," + SERVICE_PERCENT + "," + TABLE_ID + "," + WAITER_ID + ",'" + RADIO_FREE_RUNNING + "','" + NOFG + "'," + TAX_RUPEES + "," + TAX_PERCENT + ",1,0,'other2','" + diinOrDelivery + "','other2','0')";
+                                "VALUES (" + KOT_ID + "," + KOT + "," + VR + ",'" + currentDate + "','" + DESCRIPTION + "','0004'," + ORDER + ",'" + RADIO_DIIN_DELIVERY_TAKEWAY + "','" + ETYPE + "'," + DISCOUNT_RUPEES + "," + DISCOUNT_PERCENT + "," + SERVICE_RUPEES + "," + TOTAL_AMOUNT + "," + TOTAL_QTY + ",0,0," + NET_AMOUNT + ",'other1'," + SERVICE_PERCENT + "," + TABLE_ID + "," + WAITER_ID + ",'" + RADIO_FREE_RUNNING + "','" + NOFG + "'," + TAX_RUPEES + "," + TAX_PERCENT + ",1,0,'other2','" + fType_NAME+ "','Etype2','0')";
 
                         Statement stmt = conn.createStatement();
                         int res = stmt.executeUpdate(sqlQueryKotMin);
@@ -1295,9 +1303,6 @@ catch ( Exception ex)
     }
 
 
-
-
-
     public class GetUserRights extends AsyncTask<String, String, String> {
         String z = "";
         Boolean IsSuccess = false;
@@ -1383,8 +1388,6 @@ catch ( Exception ex)
             super.onPostExecute(vrno);
         }
     }
-
-
 
 
     public class GetRunningOrderNo extends AsyncTask<String, String, String> {
@@ -1634,7 +1637,7 @@ catch ( Exception ex)
 
 
                     String query = "SELECT KotMain.KotId as kotId,KotMain.VrNo as vrNo,KotMain.VrNoa as vrNoa" +
-                            ",KotMain.OrderNo as orderNo,KotMain.Type as type,KotMain.EType as etype," +
+                            ",KotMain.OrderNo as orderNo,KotMain.Type as type,KotMain.EType as etype,KotMain.Food_Type as fType,KotMain.nofg as nofg," +
                             "KotMain.Discount as discount,KotMain.DiscPercent as discPercent," +
                             "KotMain.Charges as serviceCharges,KotMain.TotalAmount as totalAmount," +
                             "KotMain.TotalQty as totalQty,KotMain.NetAmount as netAmount," +
@@ -1664,6 +1667,10 @@ catch ( Exception ex)
                         String vrNoa = resultset.getString("vrNoa");
                         String orderNo = resultset.getString("orderNo");
                         String type = resultset.getString("type");
+                        String food_Type = resultset.getString("fType");
+                        String nofg = resultset.getString("nofg");
+
+
 
                         vrnoa_all=new Double(vrNoa).intValue();
 
@@ -1708,6 +1715,8 @@ catch ( Exception ex)
                         object.setServicePercent(servicePercent);
                         object.setServiceAmount(serviceCharges);
                         object.setEtype(etype);
+                        object.setFood_Type(food_Type);
+                        object.setNofg(nofg);
 
                         getVrnoAllModelArrayList.add(object);
 
@@ -1769,6 +1778,7 @@ catch ( Exception ex)
             editTextVrValue.setText(vrCounter+"");
             orderValue.setText("");
             kotValue.setText("");
+            editText_nop.setText("");
 
             qtyValueTextView.setText("");
             amountValueTextView.setText("");
@@ -1793,6 +1803,10 @@ catch ( Exception ex)
 
                 orderValue.setText(new Double(getVrnoAllModelArrayList.get(0).getOrderNo()).intValue()+"");
                 kotValue.setText(new Double(getVrnoAllModelArrayList.get(0).getVrNO()).intValue()+"");
+                if (getVrnoAllModelArrayList.get(0).getNofg().isEmpty() ||getVrnoAllModelArrayList.get(0).getNofg()!=null )
+                    editText_nop.setText(new Double(getVrnoAllModelArrayList.get(0).getNofg()).intValue()+"");
+
+                String.valueOf(validaterInteger(editText_nop.getText().toString()));
 
 
                 MyApplication.orderNo=orderValue.getText().toString();
@@ -1826,6 +1840,17 @@ catch ( Exception ex)
                 freeOrRunning=getVrnoAllModelArrayList.get(0).getStatus();
 
                 mRadioGroupNewRunning.check(R.id.running);
+
+                fType_NAME=getVrnoAllModelArrayList.get(0).getFood_Type();
+
+                String[] ftypeArray=new String[1];
+                ftypeArray[0]=fType_NAME;
+
+                fTypeSpinnerRetrive(spinnerFtype, ftypeArray);
+
+
+
+
 
 
                 String retriveTabelId=getVrnoAllModelArrayList.get(0).getTableId();
@@ -2002,8 +2027,6 @@ catch ( Exception ex)
     }
 
 
-
-
     public class GetTableNumberRetrive extends AsyncTask<String, String, String> {
         String z = "";
 
@@ -2094,8 +2117,6 @@ catch ( Exception ex)
 
         }
     }
-
-
 
 
     public class GetTableNumber extends AsyncTask<String, String, String> {
@@ -2368,95 +2389,6 @@ catch ( Exception ex)
 
 
 
-    public class GetFtypeRetrive extends AsyncTask<String, String, String> {
-        String z = "";
-
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            String  waiterId=params[0];
-            DbConnection connect = new DbConnection();
-
-
-            try {
-                conn = connect.connectionclass();
-                if (conn == null) {
-                    z = "Please check internet connection";
-                } else {
-
-                    String query ="select * from Waiter where Waiter_Id="+waiterId;
-
-                    Statement stmt = conn.createStatement();
-                    resultset = stmt.executeQuery(query);
-
-                    waiterNumberList = new ArrayList<>();
-
-
-
-                    while (resultset.next()) {
-
-                        String waiter_id = resultset.getString("Waiter_Id");
-                        String name = resultset.getString("Name");
-
-                        WaiterModel object = new WaiterModel();
-
-                        object.setWaiterId(waiter_id);
-                        object.setWaiterName(name);
-
-
-                        waiterNumberList.add(object);
-                    }
-
-                    // spinner for waiter//
-                    waiterNameArray=new String[waiterNumberList.size()];
-
-                    for (int i=0; i<waiterNumberList.size(); i++){
-                        waiterNameArray[i]=waiterNumberList.get(i).getWaiterName();
-
-                    }
-
-
-                    Log.d("Size waiter_List", waiterNumberList.size() + "");
-
-                    resultset.close();
-                }
-
-            } catch (Exception ex) {
-                z = ex.getMessage();
-
-            } finally {
-                if (conn != null) {
-                    try {
-                        conn.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-
-                    try {
-                        if (resultset != null) {
-                            resultset.close();
-                        }
-
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-
-            return z;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-
-            waiterSpinnerRetrive(waiterSpinner,waiterNameArray);
-        }
-
-
-    }
 
     public class GetFtype extends AsyncTask<String, String, String> {
         String z = "";
@@ -2474,7 +2406,7 @@ catch ( Exception ex)
                     z = "Please check internet connection";
                 } else {
 
-                    String query ="select * from Waiter ";
+                    String query =" select  distinct  Food_Type  from KotMain where ISNULL(Food_Type,'') <> ''";
 
                     Statement stmt = conn.createStatement();
                     resultset = stmt.executeQuery(query);
@@ -2485,12 +2417,10 @@ catch ( Exception ex)
 
                     while (resultset.next()) {
 
-                        String waiter_id = resultset.getString("Waiter_Id");
-                        String name = resultset.getString("Name");
+                        String name = resultset.getString("Food_Type");
 
                         FtypeModel object = new FtypeModel();
 
-                        object.setfTypeId(waiter_id);
                         object.setfTypeName(name);
 
 
@@ -2548,61 +2478,6 @@ catch ( Exception ex)
     }
 
 
-
-    public  void fTypeSpinnerRetrive(final Spinner spinnerFtype, String[] tableArray)
-    {
-
-
-        try {
-
-
-            SpinnerSelectValueAdapter adapter = new SpinnerSelectValueAdapter(CartActivity.this, android.R.layout.simple_list_item_1);
-            adapter.addAll(tableArray);
-            adapter.add("Select FType");
-            spinnerFtype.setSelection(adapter.getCount());
-            spinnerFtype.setAdapter(adapter);
-            spinnerFtype.setSelection(0);
-
-            spinnerFtype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view,
-                                           int position, long id) {
-                    // TODO Auto-generated method stub
-
-
-                    String fTypeNumber = spinnerFtype.getSelectedItem().toString();
-
-                    int indexNew = (int) id;
-
-                    String fTypeId = fTypeNumberList.get(indexNew).getfTypeId();
-                    String fTypeName = fTypeNumberList.get(indexNew).getfTypeName();
-                    fType_NAME=fTypeName;
-                    fType_ID = fTypeId;
-                    flagFtype = true;
-
-
-                }
-
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    // TODO Auto-generated method stub
-
-                }
-            });
-
-        }
-        catch (Exception e)
-        {
-            e.getMessage();
-        }
-
-
-    }
-
-
-
     public  void fTypeSpinner(final Spinner spinnerFtype, String[] fTypeArray, final int index)
     {
 
@@ -2637,12 +2512,13 @@ catch ( Exception ex)
 
                         int indexNew = (int) id;
 
-                        String fTypeId = fTypeNumberList.get(indexNew).getfTypeId();
+//                        String fTypeId = fTypeNumberList.get(indexNew).getfTypeId();
                         String fTypeName =fTypeNumberList.get(indexNew).getfTypeName();
 
                         fType_NAME=fTypeName;
+                        Toast.makeText(CartActivity.this, ""+fType_NAME, Toast.LENGTH_SHORT).show();
 
-                        fType_ID = fTypeId;
+                        //fType_ID = fTypeId;
                         flagFtype = true;
 
 
@@ -2676,7 +2552,49 @@ catch ( Exception ex)
     }
 
 
+    public  void fTypeSpinnerRetrive(final Spinner spinnerFtype, String[] fTypeArray)
+    {
 
+
+        try {
+
+
+            SpinnerSelectValueAdapter adapter = new SpinnerSelectValueAdapter(CartActivity.this, android.R.layout.simple_list_item_1);
+            adapter.addAll(fTypeArray);
+            adapter.add("Select fType");
+            spinnerFtype.setSelection(adapter.getCount());
+            spinnerFtype.setAdapter(adapter);
+            spinnerFtype.setSelection(0);
+
+            spinnerFtype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view,
+                                           int position, long id) {
+
+                    fType_NAME = spinnerFtype.getSelectedItem().toString();
+
+
+
+
+                }
+
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    // TODO Auto-generated method stub
+
+                }
+            });
+
+        }
+        catch (Exception e)
+        {
+            e.getMessage();
+        }
+
+
+    }
 
 
     public  void tableSpinnerRetrive(final Spinner spinnerTableId, String[] tableArray)
@@ -2731,7 +2649,6 @@ catch ( Exception ex)
 
 
     }
-
 
 
     public  void tableSpinner(final Spinner spinnerTableId, String[] tableArray, final int index)
@@ -2930,9 +2847,6 @@ catch ( Exception ex)
 
 
     }
-
-
-
 
 
 
