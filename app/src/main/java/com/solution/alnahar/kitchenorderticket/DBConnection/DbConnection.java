@@ -23,18 +23,18 @@ public class DbConnection {
     {
 
 
-        String user="sa";
-        String database="CP_Restaurant_2017";
-        String password="123";
-        String server="192.168.8.108";
-
-
-
-//
-//        String user=MyApplication.userDatabase;
-//        String password=MyApplication.passwordDatabase;
-//         String server=MyApplication.ipAdress;
+//        String user="sa";
 //        String database="CP_Restaurant_2017";
+//        String password="123";
+//        String server="192.168.8.108";
+
+
+
+
+        String user=MyApplication.userDatabase;
+        String password=MyApplication.passwordDatabase;
+         String server=MyApplication.ipAdress;
+        String database="CP_Restaurant_2017";
 
 
 
